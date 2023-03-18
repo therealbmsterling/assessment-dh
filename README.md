@@ -5,7 +5,7 @@ This was a nice little challenge and I really enjoyed it.
 ## Some things to call out
 * My approach to the expressjs server is not production ready, it was intended to simply feed up the form and log and allow for `POST` requests
 * The regexs found in `app.post('/process'` can be improved, again, just trying to get it done quickly.
-* Lastly, the second point under "Performance Requirements" has not been addressed. I was over the 4 hour recommended window and, per a statement either Adam or bret said in passing, something to the effect of "done is better than perfect", I figured getting it done was the best route. I would love to discuss what my plans were for preventing the "doubled for every transactions." 
+* Lastly, the second point under "Performance Requirements" has not been addressed. I was over the 4 hour recommended window and, per a statement either Adam or Bret said in passing, something to the effect of "done is better than perfect", I figured getting it done was the best route. I would love to discuss what my plans were for preventing the "doubled for every transactions." 
 
 ## Testing Environment
 ### Node.js
