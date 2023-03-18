@@ -1,0 +1,54 @@
+<div id="app">
+  <form action="/process" method="post">
+    <input type="text" name="command" id="command" />
+    <button type="submit">Execute command</button>
+  </form>
+
+  <pre id="log"></pre>
+</div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  const form = document.querySelector('form');
+  const log = document.getElementById('log');
+  const app = document.getElementById('app');
+  const command = document.getElementById('command');
+
+  const logMessage = (msg) => {
+    log.append(`${msg} \n`);
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    logMessage(`>> ${command.value}`);
+
+    command.value = '';
+
+    axios
+      .post("/process", formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        const {
+          status,
+          message,
+        } = res.data;
+
+        if (message === 'kill') {
+          app.innerHTML = 'App killed, close browser window';
+        } else {
+          if (message !== undefined) {
+            logMessage(message);
+          }
+        }
+
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+</script>
